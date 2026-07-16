@@ -36,6 +36,17 @@ Then:
 
     pytest -v
 
+## What's implemented
+
+| Failure Mode | Suite | Tests | Status |
+|---|---|---|---|
+| FM-01 Structural Integrity | `tests/test_fm01_structural.py` | 4 | ✅ Passing |
+| FM-02 Instruction Compliance | `tests/test_fm02_compliance.py` | 3 | ✅ Passing |
+| FM-03 Consistency / Drift Baseline | `tests/test_fm03_consistency.py` | 2 | ✅ Passing |
+| FM-04 Refusal Behavior | — | — | Planned |
+| FM-05 Performance Budget | — | — | Planned |
+| FM-06 Model Version Regression | — | — | Planned |
+
 ## Status
 
-v0.1 in progress. Next: FM-01 (structural), FM-02 (compliance), FM-03 (consistency) as working pytest suites.
+v0.1 complete. 9 tests passing across 3 failure modes. Next: FM-04 refusal behavior.
