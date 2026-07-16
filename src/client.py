@@ -23,13 +23,18 @@ def get_client() -> anthropic.Anthropic:
     return anthropic.Anthropic(api_key=api_key)
 
 
-def ask(prompt: str, max_tokens: int = 1024) -> str:
-    """Send a single user prompt to the model and return its text reply."""
+def ask(prompt: str, max_tokens: int = 1024, system: str | None = None) -> str:
+    """Send a single user prompt to the model and return its text reply.
+
+    Pass `system` to set a system prompt (e.g. instructing JSON-only output).
+    """
     client = get_client()
+    kwargs = {"system": system} if system is not None else {}
     response = client.messages.create(
         model=MODEL,
         max_tokens=max_tokens,
         messages=[{"role": "user", "content": prompt}],
+        **kwargs,
     )
     return "".join(block.text for block in response.content if block.type == "text")
 
